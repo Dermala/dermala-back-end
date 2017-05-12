@@ -8,9 +8,8 @@ const morgan = require('morgan');
 const logger = require('./lib/logger');
 const gzip = require('compression');
 
-const customerRoute = require('./routes/customer.route');
-const productRoute = require('./routes/products.route');
-const postRoute = require('./routes/post.route');
+const userRoute = require('./routes/user.route');
+const photoRoute = require('./routes/photo.route');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/dermala');
@@ -28,10 +27,10 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 //Add Routes
-app.use('/api/customers', customerRoute);
-app.use('/api/products', productRoute);
+app.use('/api/users', userRoute);
 app.use('/api/photos', photoRoute);
 
+//Global Error Handler
 app.use(function(err, req, res, next){
     if(err){
         logger.log('error', err);
@@ -41,8 +40,8 @@ app.use(function(err, req, res, next){
     next();
 });
 
+//Start Server
 const port = process.env.PORT || 3000;
-
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
