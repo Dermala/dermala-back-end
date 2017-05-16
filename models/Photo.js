@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 
 const PostSchema = new Schema({
     imageUrl: { type: String, required: true },
-    createdBy: { type: Schema.Types.objectId, ref: 'User' },
-    postDate: { type: Schema.Types.objectId, ref: 'Date' },
+    createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
+    postDate: { type: Schema.Types.ObjectId, ref: 'Date' },
     
     rating: [{ type: Number, required: true }],
     question1: [{ type: Boolean, required: false}],

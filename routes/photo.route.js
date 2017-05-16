@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const Promise = require('bluebird');
-const User = require('../models/customer');
-const Post = require('../models/post');
+const User = require('../models/User');
+const Photo = require('../models/Photo');
 const requiresAuth = require('../lib/requiresAuth');
 
 

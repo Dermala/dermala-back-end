@@ -16,7 +16,7 @@ const UserSchema = new Schema({
         required: true
     },
 
-    photos: [{ type: Schema.Types.objectId, ref: 'Photo'}]
+    photos: [{ type: Schema.Types.ObjectId, ref: 'Photo'}]
 });
 
 UserSchema.pre('save', hashPassword);
