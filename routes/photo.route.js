@@ -7,10 +7,10 @@ const Photo = require('../models/Photo');
 const requiresAuth = require('../lib/requiresAuth');
 
 
-router.route('/photo')
+router.route('/')
             .get(requiresAuth(), getAllPhotos)
             .post(requiresAuth(), addPhoto);
-router.route('/photo/:id')
+router.route('/:id')
             .delete(requiresAuth(), deletePhoto);
 
 module.exports = router;
