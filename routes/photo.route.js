@@ -7,10 +7,12 @@ const Photo = require('../models/Photo');
 const requiresAuth = require('../lib/requiresAuth');
 
 
-router.route('/')
+router.route('/photo')
             .get(requiresAuth(), getAllPhotos)
             .post(requiresAuth(), addPhoto);
-router.route('/:id')
+router.route('/photo/:id')
+            .get(requireAuth(), getPhoto)
+            .put(requireAuth(), updatePhoto)
             .delete(requiresAuth(), deletePhoto);
 
 module.exports = router;
@@ -26,11 +28,9 @@ function getAllPhotos(req, res, next) {
 }
 
 function addPhoto(req, res, next) {
-    const newPhoto = new Photo({
-        imageUrl: { type: String, required: true },
-        createdBy: { type: Schema.Types.objectId, ref: 'User' },
-        postDate: { type: Schema.Types.objectId, ref: 'Date' },
-    })
+    const newPhoto = new Photo(req.body)
+
+    newPhoto.createdBy = req.user;
     newPhoto    
         .save()
         .then(photo => res.json(photo))
