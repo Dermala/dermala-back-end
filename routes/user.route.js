@@ -38,6 +38,8 @@ function register(req, res, next) {
 }
 
 function login(req, res, next) {
+    console.log(req.body);
+
     let promiseA = User.findOne({ email: req.body.email }).exec();
     let promiseB = promiseA.then(user => user.comparePassword(req.body.password));
     
