@@ -26,6 +26,7 @@ function getAllPhotos(req, res, next) {
 }
 
 function addPhoto(req, res, next) {
+    console.log(req.body);
     const newPhoto = new Photo(req.body)
 
     newPhoto.createdBy = req.user;
