@@ -11,8 +11,8 @@ router.route('/photo')
             .get(requiresAuth(), getAllPhotos)
             .post(requiresAuth(), addPhoto);
 router.route('/photo/:id')
-            .get(requireAuth(), getPhoto)
-            .put(requireAuth(), updatePhoto)
+            .get(requiresAuth(), getPhoto)
+            .put(requiresAuth(), updatePhoto)
             .delete(requiresAuth(), deletePhoto);
 
 module.exports = router;
