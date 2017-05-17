@@ -11,7 +11,6 @@ router.route('/photo')
             .get(requiresAuth(), getAllPhotos)
             .post(requiresAuth(), addPhoto);
 router.route('/photo/:id')
-            .get(requiresAuth(), getPhoto)
             .put(requiresAuth(), updatePhoto)
             .delete(requiresAuth(), deletePhoto);
 
