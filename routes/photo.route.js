@@ -30,6 +30,7 @@ function addPhoto(req, res, next) {
     const newPhoto = new Photo(req.body)
 
     newPhoto.createdBy = req.user;
+    
     newPhoto    
         .save()
         .then(photo => res.json(photo))
